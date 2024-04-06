@@ -42,7 +42,13 @@ class BinarySearchTree{
    pre-order traversal
    */
    public void preOrderTraversal(Node root){
-      //implement me
+      System.out.print(root.value + " ");
+      if (root.left != null) {
+         preOrderTraversal(root.left);
+      }
+      if (root.right != null) {
+         preOrderTraversal(root.right);
+      }
    }
 
    
@@ -91,8 +97,7 @@ class BinarySearchTree{
    a method to find the node in the tree
    with the smallest key
    */
-   public int getMin(Node root){
-      //implement me
+   public int getMin(Node root) {
       if (root.left == null) {
          return root.value;
       }
@@ -107,9 +112,13 @@ class BinarySearchTree{
    a method to find the node in the tree
    with the largest key
    */
-   public int getMax(Node root){
-	  //implement me
-      return 0;
+   public int getMax(Node root) {
+      if (root.right == null) {
+         return root.value;
+      }
+      else {
+         return getMax(root.right);
+      }
    }
    
    
@@ -166,9 +175,15 @@ public class TreeDemo{
       t1.insert(t1.root, 9);
       t1.insert(t1.root, 90);
       t1.insert(t1.root, 22);
+
       System.out.println(t1.find(t1.root, 90));
+
       System.out.println(t1.getMin(t1.root));
-      System.out.print("in-order :   ");
+      System.out.println(t1.getMax(t1.root));
+
+      System.out.print("pre-order :   ");
+      t1.preOrderTraversal(t1.root);
+
       t1.inOrderTraversal(t1.root);
       System.out.println();
            
