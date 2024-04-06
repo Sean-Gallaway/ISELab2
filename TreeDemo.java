@@ -93,7 +93,12 @@ class BinarySearchTree{
    */
    public int getMin(Node root){
       //implement me
-      return 0;
+      if (root.left == null) {
+         return root.value;
+      }
+      else {
+         return getMin(root.left);
+      }
    }
   
   
@@ -162,7 +167,7 @@ public class TreeDemo{
       t1.insert(t1.root, 90);
       t1.insert(t1.root, 22);
       System.out.println(t1.find(t1.root, 90));
-            
+      System.out.println(t1.getMin(t1.root));
       System.out.print("in-order :   ");
       t1.inOrderTraversal(t1.root);
       System.out.println();
